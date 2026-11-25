@@ -2,13 +2,13 @@
 
 Entry for **Toggle Wars: The Flagsmith Experimentation Hackathon** (WeMakeDevs, Nov 26-29, 2026), **Track 01: Test Something Real**.
 
-Status: Flagsmith project `first-click` (environment Production) and multivariate flag `cta_text` are live; `snippet/first-click.js` reads it per visitor; `node test/split.test.mjs` checks the 50/50 split and sticky assignment against the live edge API (40 test identities `qa-split-*`: 23/17). The snippet now uses the Flagsmith JS SDK 12.6.0 with `enableEvents`: `getExperimentFlag` records the exposure and the first click sends `cta_click`; `node test/events.test.mjs` sends both for a `qa-events-*` identity and fails unless the events API accepts them (202). Next: the live page. Hacking window opens Nov 26, 8:00 AM IST. Rule 04 of the event allows a head start ("try Flagsmith and start building your idea with it before the hackathon begins").
+Status: Flagsmith project `first-click` (environment Production) and multivariate flag `cta_text` are live; `snippet/first-click.js` reads it per visitor; `node test/split.test.mjs` checks the 50/50 split and sticky assignment against the live edge API (40 test identities `qa-split-*`: 23/17). The snippet now uses the Flagsmith JS SDK 12.6.0 with `enableEvents`: `getExperimentFlag` records the exposure and the first click sends `cta_click`; `node test/events.test.mjs` sends both for a `qa-events-*` identity and fails unless the events API accepts them (202). Live page: the hero "Start a project" button of https://www.designmastersolutions.com/ carries `data-first-click` and loads `js/first-click.js` (Nov 25); the flag control value was changed to "Start a project" so the control is exactly what the page showed before the test. Hacking window opens Nov 26, 8:00 AM IST. Rule 04 of the event allows a head start ("try Flagsmith and start building your idea with it before the hackathon begins").
 
 ## The question
 
 Design Master Solutions runs real service pages that get real visitors every day. The first action we care about on those pages is a visitor starting a conversation (the contact button). We do not know which wording of the main call to action gets more first clicks.
 
-**Hypothesis:** a call to action that names the outcome ("Get a quote today") gets more first clicks than the generic one the page uses today ("Contact us").
+**Hypothesis:** a call to action that names the outcome ("Get a quote today") gets more first clicks than the generic one the page uses today ("Start a project", the main button of the home page hero at designmastersolutions.com).
 
 - Control: the current button text, unchanged.
 - Variant: the outcome wording.

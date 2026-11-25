@@ -1,5 +1,5 @@
 // First Click: applies the cta_text experiment flag to the main call to action and tracks cta_click.
-// Usage: <a data-first-click href="...">Contact us</a> <script src="first-click.js" defer></script>
+// Usage: <a data-first-click href="..."><span>Start a project</span></a> <script src="first-click.js" defer></script>
 (function () {
   var ENV_KEY = 'cEah9PMHR4vhyqmBX4o9FJ'; // client-side environment key (public by design)
   var SDK = 'https://cdn.jsdelivr.net/npm/@flagsmith/flagsmith@12.6.0/index.js';
@@ -20,7 +20,7 @@
       .then(function () {
         var f = fs.getExperimentFlag('cta_text'); // records the exposure
         if (f && f.enabled && f.value) {
-          el.textContent = f.value;
+          (el.querySelector('span') || el).textContent = f.value; // keep the button's inner <span> styling
           el.dataset.variant = f.value;
         }
         var sent = false;

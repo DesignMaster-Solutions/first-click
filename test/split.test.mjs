@@ -2,7 +2,7 @@
 // Run: node test/split.test.mjs [N]
 const KEY = 'cEah9PMHR4vhyqmBX4o9FJ';
 const N = Number(process.argv[2] || 40);
-const TEXTS = ['Contact us', 'Get a quote today'];
+const TEXTS = ['Start a project', 'Get a quote today'];
 const counts = Object.fromEntries(TEXTS.map((t) => [t, 0]));
 for (let i = 0; i < N; i++) {
   const r = await fetch(`https://edge.api.flagsmith.com/api/v1/identities/?identifier=qa-split-${i}`, {
