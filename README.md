@@ -2,7 +2,7 @@
 
 Entry for **Toggle Wars: The Flagsmith Experimentation Hackathon** (WeMakeDevs, Nov 26-29, 2026), **Track 01: Test Something Real**.
 
-Status: Flagsmith project `first-click` (environment Production) and multivariate flag `cta_text` are live; `snippet/first-click.js` reads it per visitor; `node test/split.test.mjs` checks the 50/50 split and sticky assignment against the live edge API (40 test identities `qa-split-*`: 23/17). Next: event `cta_click` and the live page. Hacking window opens Nov 26, 8:00 AM IST. Rule 04 of the event allows a head start ("try Flagsmith and start building your idea with it before the hackathon begins").
+Status: Flagsmith project `first-click` (environment Production) and multivariate flag `cta_text` are live; `snippet/first-click.js` reads it per visitor; `node test/split.test.mjs` checks the 50/50 split and sticky assignment against the live edge API (40 test identities `qa-split-*`: 23/17). The snippet now uses the Flagsmith JS SDK 12.6.0 with `enableEvents`: `getExperimentFlag` records the exposure and the first click sends `cta_click`; `node test/events.test.mjs` sends both for a `qa-events-*` identity and fails unless the events API accepts them (202). Next: the live page. Hacking window opens Nov 26, 8:00 AM IST. Rule 04 of the event allows a head start ("try Flagsmith and start building your idea with it before the hackathon begins").
 
 ## The question
 
