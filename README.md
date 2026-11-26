@@ -36,3 +36,9 @@ Design Master Solutions runs real service pages that get real visitors every day
 - Real visitors only on the live page; no scripted traffic mixed into the live experiment.
 - If traffic is too low for a clear result, the write-up says so.
 - The control stays exactly what the page shows today, so the test never makes the page worse for half the visitors by design.
+
+## Pipeline check on the live page (Nov 26, 06:15 UTC)
+
+Three hours after the start the results had zero exposures, so before blaming traffic we checked the whole path on the real page. We opened https://www.designmastersolutions.com/ in Chrome with the visitor id set to `qa-debug-1126`: the page loaded the SDK, called `/identities/?identifier=qa-debug-1126`, the edge API answered with `metadata.experiment.in_experiment: true` and variant `control`, the button kept "Start a project", and the page posted to `https://events.api.flagsmith.com/v1/events`. After a results refresh the experiment showed that one exposure (`control: n=1`, hour bucket 06:00 UTC), export in `experiment/results-2026-11-26T0618Z.json`. So the pipeline works end to end and the earlier zero was simply no visitors overnight.
+
+That single `qa-debug-1126` exposure is ours, not a real visitor. It had no click, and the final write-up subtracts it from the control count.
