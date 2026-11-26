@@ -1,0 +1,20 @@
+{
+ "id": 509,
+ "name": "First CTA click",
+ "description": "Visitor clicked the hero call to action at least once (cta_click).",
+ "aggregation": "occurrence",
+ "direction": "up",
+ "definition": {
+  "event": "cta_click",
+  "version": 1
+ },
+ "experiments": [
+  {
+   "id": 525,
+   "name": "Hero CTA wording",
+   "status": "running"
+  }
+ ],
+ "created_at": "2026-11-26T03:13:06.939314Z",
+ "updated_at": "2026-11-26T03:13:06.939322Z"
+}
