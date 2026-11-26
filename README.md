@@ -42,3 +42,14 @@ Design Master Solutions runs real service pages that get real visitors every day
 Three hours after the start the results had zero exposures, so before blaming traffic we checked the whole path on the real page. We opened https://www.designmastersolutions.com/ in Chrome with the visitor id set to `qa-debug-1126`: the page loaded the SDK, called `/identities/?identifier=qa-debug-1126`, the edge API answered with `metadata.experiment.in_experiment: true` and variant `control`, the button kept "Start a project", and the page posted to `https://events.api.flagsmith.com/v1/events`. After a results refresh the experiment showed that one exposure (`control: n=1`, hour bucket 06:00 UTC), export in `experiment/results-2026-11-26T0618Z.json`. So the pipeline works end to end and the earlier zero was simply no visitors overnight.
 
 That single `qa-debug-1126` exposure is ours, not a real visitor. It had no click, and the final write-up subtracts it from the control count.
+
+## Results so far and how the write-up numbers are made (Nov 26, 22:04 UTC, ~19 h in)
+
+`node experiment/summarize.mjs` reads the newest raw export and subtracts the exposures we declared as ours in `experiment/own-exposures.json` (the two checks described above). `node test/summarize.test.mjs` fails if that subtraction is skipped or ever goes negative. Today's export (`experiment/results-2026-11-26T2204Z.json`):
+
+| Arm | Exposures | Ours | Real visitors | First CTA clicks |
+|---|---|---|---|---|
+| control "Start a project" | 4 | 2 | 2 | 0 |
+| outcome "Get a quote today" | 2 | 0 | 2 | 0 |
+
+Four real visitors and no clicks: Flagsmith has no inference yet, and with this traffic the honest reading is inconclusive. The final write-up uses the last export before the deadline, produced the same way.

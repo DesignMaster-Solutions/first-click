@@ -1,0 +1,4 @@
+[
+  {"bucket": "2026-11-26T06:00:00+00:00", "arm": "control", "who": "qa-debug-1126 pipeline check on the home page (Nov 26 06:15 UTC)"},
+  {"bucket": "2026-11-26T15:00:00+00:00", "arm": "control", "who": "our live check of /web-design/ after the deploy (Nov 26 ~15:25 UTC)"}
+]
