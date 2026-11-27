@@ -29,7 +29,20 @@ Design Master Solutions runs real service pages that get real visitors every day
 - The page snippet (flag read + event), with setup steps.
 - The experiment configuration and the raw result export.
 - A short write-up: hypothesis, traffic, result, what we decided and why.
-- Demo video.
+- Demo video (64 s): https://youtu.be/DFE7b3v0_uQ (`video/demo.mp4`, rendered from `video/demo.json`).
+
+## Setup
+
+No install. Node 18 or newer.
+
+```
+node test/summarize.test.mjs
+node experiment/summarize.mjs
+```
+
+The first fails if the write-up forgets to subtract our own visits, or if that subtraction would go below zero. The second prints the table from the newest `experiment/results-*.json`.
+
+Flagsmith project `first-click`, flag `cta_text` (control `Start a project`, variant key `outcome` = `Get a quote today`), metric `First CTA click`, experiment `Hero CTA wording`. The public client key is in `snippet/first-click.js`. The live button is the hero "Start a project" on https://www.designmastersolutions.com/ and on the four service pages named above. Do not send scripted traffic into the live experiment.
 
 ## Honesty rules for this entry
 

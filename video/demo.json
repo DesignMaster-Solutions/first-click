@@ -1,0 +1,41 @@
+{
+  "brand": "First Click · Design Master Solutions LLC · Track 01",
+  "voice": "alan",
+  "lang": "en",
+  "rate": 170,
+  "bg": "#0f1b2d",
+  "accent": "#22c55e",
+  "out": "demo.mp4",
+  "scenes": [
+    {
+      "title": "Which wording gets the first click",
+      "lines": [
+        "Live service pages. Two button texts. One metric.",
+        "Flagsmith experiment, running since 26 Nov 2026.",
+        "Control stays the text the page already used."
+      ],
+      "say": "Design Master Solutions runs service pages with real visitors. The first action that matters is the main button. Flagsmith is testing two wordings of that button on the live site, and it has been running since November twenty sixth."
+    },
+    {
+      "title": "The decision was fixed first",
+      "lines": [
+        "Control: Start a project",
+        "Variant: Get a quote today",
+        "Ship the variant only at a 95 percent win probability."
+      ],
+      "say": "The control is Start a project, the text already on the page. The variant is Get a quote today. The variant ships only if Flagsmith reports a win probability of ninety five percent or more. Otherwise the control stays."
+    },
+    {
+      "title": "Our own checks leave the count",
+      "mono_cmd": "node test/summarize.test.mjs",
+      "mono_cwd": "..",
+      "say": "The write-up subtracts visits we made ourselves. This test fails if that subtraction is skipped, or if it would push a count below zero."
+    },
+    {
+      "title": "Nineteen hours in, still inconclusive",
+      "mono_cmd": "node experiment/summarize.mjs",
+      "mono_cwd": "..",
+      "say": "Nineteen hours in, four real visitors and no clicks. Flagsmith has no inference yet, so the variant does not ship. The same command rebuilds this table from the newest export before the deadline."
+    }
+  ]
+}

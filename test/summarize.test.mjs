@@ -12,4 +12,6 @@ if (!s.verdict.startsWith('inconclusive')) throw new Error(`verdict: ${s.verdict
 let threw = false;
 try { summarize(load('results-2026-11-26T0618Z.json'), [...own, ...own]); } catch { threw = true; }
 if (!threw) throw new Error('more own exposures than total must fail');
-console.log('ok', JSON.stringify(s.rows));
+console.log(`ok control real=${byArm.control.real} clicks=${byArm.control.clicks}`);
+console.log(`ok outcome real=${byArm.outcome.real} clicks=${byArm.outcome.clicks}`);
+console.log('ok negative count refused');

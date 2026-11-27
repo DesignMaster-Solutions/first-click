@@ -1,0 +1,8 @@
+First Click, Track 01 of Toggle Wars (Flagsmith / WeMakeDevs).
+
+A live A/B test on the main button of Design Master Solutions service pages. Control is the text already on the page, "Start a project". Variant is "Get a quote today". The variant ships only if Flagsmith reports a win probability of 95 percent or more.
+
+Nineteen hours in, the export shows four real visitors and no clicks, after subtracting our own checks. Flagsmith has no inference yet, so the variant does not ship.
+
+Code: https://github.com/DesignMaster-Solutions/first-click
+Live page: https://www.designmastersolutions.com/
