@@ -71,4 +71,4 @@ That single `qa-debug-1126` exposure is ours, not a real visitor. It had no clic
 | control "Start a project" | 4 | 2 | 2 | 0 |
 | outcome "Get a quote today" | 2 | 0 | 2 | 0 |
 
-Four real visitors and no clicks: Flagsmith has no inference yet, and with this traffic the honest reading is inconclusive. The final write-up uses the last export before the deadline, produced the same way.
+Four real visitors and no clicks: Flagsmith has no inference yet, and with this traffic the honest reading is inconclusive. The final write-up uses the last export before the deadline, produced the same way. A probability under 95% stays inconclusive, and a sample-ratio p-value under 0.01 is blocked; the summary never ships the variant.

@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const dir = fileURLToPath(new URL('.', import.meta.url));
+const THRESHOLD = 0.95; // same predeclared rule as the experiment: ship only at 95% or more
 
 export function summarize(results, own) {
   const m = results.payload.metrics[0];
@@ -15,7 +16,18 @@ export function summarize(results, own) {
     if (real < 0) throw new Error(`${arm}: more own exposures (${ours}) than total (${n})`);
     return { arm, exposures: n, ours, real, clicks: sum, rate: real ? sum / real : null };
   });
-  const verdict = m.inference && Object.values(m.inference).some((v) => v) ? 'see Flagsmith inference' : 'inconclusive: no inference yet';
+  const srm = results.payload.srm_p_value;
+  let verdict = 'inconclusive: no inference yet';
+  if (srm != null && srm < 0.01) {
+    verdict = 'blocked: sample-ratio mismatch; do not read a winner off this export';
+  } else {
+    const chance = m.inference?.outcome?.chance_to_win;
+    if (typeof chance === 'number' && chance >= THRESHOLD) {
+      verdict = 'threshold reached: review before any rollout; this summary does not ship';
+    } else if (typeof chance === 'number') {
+      verdict = 'inconclusive: below the predeclared 95% threshold';
+    }
+  }
   return { as_of: results.as_of, rows, verdict };
 }
 
