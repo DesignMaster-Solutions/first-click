@@ -35,6 +35,7 @@ Design Master Solutions runs real service pages that get real visitors every day
 - A short write-up: hypothesis, traffic, result, what we decided and why.
 - Demo video (64 s): https://youtu.be/DFE7b3v0_uQ (`video/demo.mp4`, rendered from `video/demo.json`).
 - Agent module demo (92 s, Tracks 02 and 04): https://youtu.be/WlBlK1AnmOo
+- Submitted demo (156 s, both parts in one): https://youtu.be/wAZKTmHNffg (`video/full-demo.mp4`)
 
 ## Setup
 
