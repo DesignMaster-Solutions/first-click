@@ -62,7 +62,18 @@ Three hours after the start the results had zero exposures, so before blaming tr
 
 That single `qa-debug-1126` exposure is ours, not a real visitor. It had no click, and the final write-up subtracts it from the control count.
 
-## Latest results (Nov 28, 03:25 UTC, ~48 h in)
+## Latest results (Nov 28, 19:34 UTC, ~64 h in)
+
+Refreshed through the Admin API (`POST .../experiments/525/results/refresh/`), raw export `experiment/results-2026-11-28T1934Z.json`, table from `node experiment/summarize.mjs`:
+
+| Arm | Exposures | Ours | Real visitors | First CTA clicks | Rate |
+|---|---|---|---|---|---|
+| control "Start a project" | 6 | 2 | 4 | 0 | 0.0% |
+| outcome "Get a quote today" | 6 | 0 | 6 | 2 | 33.3% |
+
+Three more real visitors since the morning export (one on control, two on the variant) and no new click. Ten real visitors, still 2-0 for "Get a quote today". Flagsmith still returns no inference and no sample-ratio p-value, so the verdict stays **inconclusive** and nothing is shipped.
+
+## Nov 28, 03:25 UTC (~48 h in)
 
 Refreshed through the Admin API (`POST .../experiments/525/results/refresh/`), raw export `experiment/results-2026-11-28T0325Z.json`, table from `node experiment/summarize.mjs`:
 
