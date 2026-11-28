@@ -62,6 +62,17 @@ Three hours after the start the results had zero exposures, so before blaming tr
 
 That single `qa-debug-1126` exposure is ours, not a real visitor. It had no click, and the final write-up subtracts it from the control count.
 
+## Latest results (Nov 28, 03:25 UTC, ~48 h in)
+
+Refreshed through the Admin API (`POST .../experiments/525/results/refresh/`), raw export `experiment/results-2026-11-28T0325Z.json`, table from `node experiment/summarize.mjs`:
+
+| Arm | Exposures | Ours | Real visitors | First CTA clicks | Rate |
+|---|---|---|---|---|---|
+| control "Start a project" | 5 | 2 | 3 | 0 | 0.0% |
+| outcome "Get a quote today" | 4 | 0 | 4 | 2 | 50.0% |
+
+The first two real clicks arrived on Nov 27 (hour buckets 00:00 and 20:00 UTC), both on the variant. They are not ours: our only `cta_click` test events came from the `qa-events-*` identities on Nov 25 (18:11 and 21:14 UTC), before the experiment started, and every other identity we created is `qa-*` and sends no events. Seven real visitors are still far too few: Flagsmith returns no inference and no sample-ratio p-value, so the verdict stays **inconclusive** and nothing is shipped. "Get a quote today" leads 2-0, which is a reason to keep the test running, not a result.
+
 ## Results so far and how the write-up numbers are made (Nov 26, 22:04 UTC, ~19 h in)
 
 `node experiment/summarize.mjs` reads the newest raw export and subtracts the exposures we declared as ours in `experiment/own-exposures.json` (the two checks described above). `node test/summarize.test.mjs` fails if that subtraction is skipped or ever goes negative. Today's export (`experiment/results-2026-11-26T2204Z.json`):
